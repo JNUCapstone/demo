@@ -6,6 +6,7 @@ http.createServer(function(request, response)
  // htem 파일 읽기
  fs.readFile('index.html', function(error, data)
  {
+  console.log('2')
   response.writeHead(200, {'Conternt-type':'text/html'});
   response.end(data);
  });
