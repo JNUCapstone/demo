@@ -12,4 +12,7 @@ module.exports = function(app)
     app.get('/dummy',function(req,res){
         res.render('dummy.html');
     });
+    app.get('/dual',function(req,res){
+        res.render('dual.html');
+    });
 }
