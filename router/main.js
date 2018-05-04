@@ -19,5 +19,11 @@ module.exports = function(app)
     });
     app.get('/visual',function(req,res){
         res.render('visual.html')
+    });
+    app.get('/liquidFillGauge', function(req,res){
+        res.render('liquidFilllGauge.js')
     })
+    app.get('/liquidFillGauge.js', function(req,res){
+        res.send('liquidFillGauge.js')
+    });
 }
