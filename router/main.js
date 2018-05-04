@@ -21,7 +21,10 @@ module.exports = function(app)
         res.render('visual.html')
     });
     app.get('/liquidFillGauge', function(req,res){
-        res.render('liquidFilllGauge.js')
+        res.render('liquidFillGauge.js')
+    })
+    app.get('liquidFillGauge.js', function(req,res){
+        res.render('liquidFillGauge.js')
     })
     app.get('/liquidFillGauge.js', function(req,res){
         res.send('liquidFillGauge.js')
