@@ -13,29 +13,32 @@
 </head>
 <body>
 
-<input type="button" class="btn btn-success btn-lg" value="1" id="Dummy1">
-<input type="button" class="btn btn-success btn-lg" value="2" id="Dummy2">
-<input type="button" class="btn btn-success btn-lg" value="3" id="Dummy3">
-<input type="button" class="btn btn-success btn-lg" value="4" id="Dummy4">
-<input type="button" class="btn btn-success btn-lg" value="5" id="Dummy5">
-<input type="button" class="btn btn-success btn-lg" value="6" id="Dummy6">
-<input type="button" class="btn btn-success btn-lg" value="7" id="Dummy7">
-<input type="button" class="btn btn-success btn-lg" value="8" id="Dummy8">
-<input type="button" class="btn btn-success btn-lg" value="9" id="Dummy9">
-<input type="button" class="btn btn-success btn-lg" value="10" id="Dummy10">
-
-<svg id="fillgauge1" width="97%" height="250" ></svg>
+<input type="button" class="btn btn-success btn-lg" onclick="button1_click();" value="button1" id="Dummy1">
+<input type="button" class="btn btn-success btn-lg" onclick="button2_click();" value="button2" id="Dummy2">
+<input type="button" class="btn btn-success btn-lg" onclick="button3_click();" value="button3" id="Dummy3">
+<input type="button" class="btn btn-success btn-lg" onclick="button4_click();" value="button4" id="Dummy4">
+<input type="button" class="btn btn-success btn-lg" onclick="button5_click();" value="button5" id="Dummy5">
+<input type="button" class="btn btn-success btn-lg" onclick="button6_click();" value="button6" id="Dummy6">
+<input type="button" class="btn btn-success btn-lg" onclick="button7_click();" value="button7" id="Dummy7">
+<input type="button" class="btn btn-success btn-lg" onclick="button8_click();" value="button8" id="Dummy8">
+<input type="button" class="btn btn-success btn-lg" onclick="button9_click();" value="button9" id="Dummy9">
+<input type="button" class="btn btn-success btn-lg" onclick="button10_click();" value="button10" id="Dummy10">
+<svg id="fillgauge" width="97%" height="250" ></svg>
 
 <script language="JavaScript">
-    var config1 = liquidFillGaugeDefaultSettings();
-    //config1.circleColor = "#FF7777";
-    //config1.textColor = "#FF4444";
-    //config1.waveTextColor = "#FFAAAA";
-    //config1.waveColor = "#FFDDDD";
-    config1.textVertPosition = 0.5;
-    config1.waveAnimateTime = 1000;
-    config1.circleThickness = 0.1;
-    var gauge1 = loadLiquidFillGauge("fillgauge1", 55, config1);
+    var loadvalue = 50;
+
+    
+
+    var config = liquidFillGaugeDefaultSettings();
+    //config.circleColor = "#FF7777";
+    //config.textColor = "#FF4444";
+    //config.waveTextColor = "#FFAAAA";
+    //config.waveColor = "#FFDDDD";
+    config.textVertPosition = 0.5;
+    config.waveAnimateTime = 1000;
+    config.circleThickness = 0.1;
+    var gauge = loadLiquidFillGauge("fillgauge", loadvalue, config);
 </script>
 </body>
 </html>
