@@ -20,4 +20,5 @@ module.exports = function(app)
     app.get('/visual',function(req,res){
         res.render('visual.html')
     })
+    //test
 }
