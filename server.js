@@ -10,4 +10,4 @@ var server = app.listen(8888, function(){
     console.log("Express server has started on port 8888")
 })
 
-app.use(express.static('public'));
+app.use('/static', express.static(__dirname + '/public'));
