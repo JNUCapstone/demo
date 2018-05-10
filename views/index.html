@@ -6,30 +6,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        window.onload = function() {
-            document.getElementById("Dummy").onclick = function() {
-                $("#contents").load("/dummy");
-            }
-            document.getElementById("Visualizer").onclick = function() {
-                $("#contents").load("/visualizer");
-            }
+    <style>
+        nav {
+            float: left;
+            padding: 30px;
+            border-right: 1px solid gray;
+            height: 700px;
         }
-    </script>
+        article {
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <div>
-        <br>
-        <input type="button" value="Dummy" id="Dummy">
-        <input type="button" value="Visualizer" id="Visualizer">
-        <br><br><hr><br>
-    </div>
-    <div id="contents">
-    </div>
+    <nav>
+        <ul class="nav nav-pills nav-stacked">
+            <li id="li1" role="presentation" class="active" onclick="changesrc('/temp'); document.getElementById('li2').className='unactive'; document.getElementById('li3').className='unactive'; this.className='active';"><a href="#home">Home</a></li>
+            <li id="li2" role="presentation" class="unactive" onclick="changesrc('/visual'); document.getElementById('li1').className='unactive'; document.getElementById('li3').className='unactive'; this.className='active';"><a href="#v1">visualizer1</a></li>
+            <li id="li3" role="presentation" class="unactive" onclick="changesrc('/visualizer'); document.getElementById('li1').className='unactive'; document.getElementById('li2').className='unactive'; this.className='active';"><a href="#v2">visualizer2</a></li>
+        </ul>
+    </nav>
+    <article>
+        <iframe id="iframe1" src="/" height="700px" width="100%"></iframe>
+    </article>
 </div>
 </body>
 </html>
