@@ -13,11 +13,11 @@
             const http = new XMLHttpRequest()
             http.open("GET", "http://168.131.148.45:20011/" + number)
             http.send()
+            wherei.innerText=wherei.innerText+" -> "+number;
         }
         function call_random() {
             var number = Math.floor(Math.random() * 10) + 1;
             call_page(number)
-            wherei.innerText=wherei.innerText+" -> "+number;
         }
     </script>
 </head>
