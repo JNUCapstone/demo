@@ -7,27 +7,41 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript">
+        function call_page(number) {
+            const http = new XMLHttpRequest()
+            http.open("GET", "http://168.131.148.45:20011/" + number)
+            http.send()
+        }
+        function call_random() {
+            var number = Math.floor(Math.random() * 10) + 1;
+            call_page(number)
+            wherei.innerText=wherei.innerText+" -> "+number;
+        }
+    </script>
 </head>
 <body>
 <div class="container">
 
 <br><br><br>
 
-<input type="button" class="btn btn-success btn-lg" value="1" id="Dummy1">
-<input type="button" class="btn btn-success btn-lg" value="2" id="Dummy2">
-<input type="button" class="btn btn-success btn-lg" value="3" id="Dummy3">
-<input type="button" class="btn btn-success btn-lg" value="4" id="Dummy4">
-<input type="button" class="btn btn-success btn-lg" value="5" id="Dummy5">
-<input type="button" class="btn btn-success btn-lg" value="6" id="Dummy6">
-<input type="button" class="btn btn-success btn-lg" value="7" id="Dummy7">
-<input type="button" class="btn btn-success btn-lg" value="8" id="Dummy8">
-<input type="button" class="btn btn-success btn-lg" value="9" id="Dummy9">
-<input type="button" class="btn btn-success btn-lg" value="10" id="Dummy10">
+<input type="button" onclick="call_page(1)" class="btn btn-success btn-lg" value="1" id="Dummy1">
+<input type="button" onclick="call_page(2)" class="btn btn-success btn-lg" value="2" id="Dummy2">
+<input type="button" onclick="call_page(3)" class="btn btn-success btn-lg" value="3" id="Dummy3">
+<input type="button" onclick="call_page(4)" class="btn btn-success btn-lg" value="4" id="Dummy4">
+<input type="button" onclick="call_page(5)" class="btn btn-success btn-lg" value="5" id="Dummy5">
+<input type="button" onclick="call_page(6)" class="btn btn-success btn-lg" value="6" id="Dummy6">
+<input type="button" onclick="call_page(7)" class="btn btn-success btn-lg" value="7" id="Dummy7">
+<input type="button" onclick="call_page(8)" class="btn btn-success btn-lg" value="8" id="Dummy8">
+<input type="button" onclick="call_page(9)" class="btn btn-success btn-lg" value="9" id="Dummy9">
+<input type="button" onclick="call_page(10)" class="btn btn-success btn-lg" value="10" id="Dummy10">
 
 <br><br><br>
-<input type="button" class="btn btn-warning btn-lg" value="Random" id="DummyRandom">
-<br><br><br>
+<input type="button" onclick="call_random()" class="btn btn-warning btn-lg" value="Random" id="DummyRandom">
 
+<br><br><br>
 </div>
+<div ID=wherei style="word-break: break-all"> Where I </div>
 </body>
 </html>
