@@ -1,4 +1,25 @@
-body{
-    background-color: black;
-    color: white;
+@charset "utf-8";
+
+.container-contents {
+    background-color:LightGray;
+    font-family:Verdana;
+    font-size:200%;
+    text-align:center;
+    height:260px;
+    width:200px;
+    padding:10px;
+    float:left;
+    margin:5px;
+}
+
+.container-text {
+    background-color:LightGray;
+    font-family:Verdana;
+    font-size:150%;
+    text-align:left;
+    height:260px;
+    width:339px;
+    padding:15px;
+    float:left;
+    margin:5px;
 }
