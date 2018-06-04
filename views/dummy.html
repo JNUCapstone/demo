@@ -9,15 +9,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script type="text/javascript">
+        var call1
+        var call2
+        var call3
+
         function call_page(number) {
             const http = new XMLHttpRequest()
             http.open("GET", "http://168.131.148.45:20011/" + number)
             http.send()
-            wherei.innerText=wherei.innerText+" -> "+number;
+            wherei.innerText=wherei.innerText+" -> "+number
         }
         function call_random() {
-            var number = Math.floor(Math.random() * 10) + 1;
+            var number = Math.floor(Math.random() * 10) + 1
             call_page(number)
+        }
+        function call_1() {
+            call1 = setInterval(function(){
+                call_page(1)
+            },1000)
+        }
+        function call_2() {
+            call2 = setInterval(function(){
+                call_page(2)
+            },1500)
+        }
+        function call_3() {
+            call3 = setInterval(function(){
+                call_page(3)
+            },2000)
+        }
+        function call_stop() {
+            clearInterval(call1)
+            clearInterval(call2)
+            clearInterval(call3)
         }
     </script>
 </head>
@@ -26,16 +50,10 @@
 
 <br><br><br>
 
-<input type="button" onclick="call_page(1)" class="btn btn-success btn-lg" value="1" id="Dummy1">
-<input type="button" onclick="call_page(2)" class="btn btn-success btn-lg" value="2" id="Dummy2">
-<input type="button" onclick="call_page(3)" class="btn btn-success btn-lg" value="3" id="Dummy3">
-<input type="button" onclick="call_page(4)" class="btn btn-success btn-lg" value="4" id="Dummy4">
-<input type="button" onclick="call_page(5)" class="btn btn-success btn-lg" value="5" id="Dummy5">
-<input type="button" onclick="call_page(6)" class="btn btn-success btn-lg" value="6" id="Dummy6">
-<input type="button" onclick="call_page(7)" class="btn btn-success btn-lg" value="7" id="Dummy7">
-<input type="button" onclick="call_page(8)" class="btn btn-success btn-lg" value="8" id="Dummy8">
-<input type="button" onclick="call_page(9)" class="btn btn-success btn-lg" value="9" id="Dummy9">
-<input type="button" onclick="call_page(10)" class="btn btn-success btn-lg" value="10" id="Dummy10">
+<input type="button" onclick="call_1()" class="btn btn-success btn-lg" value="1" id="Dummy1">
+<input type="button" onclick="call_2()" class="btn btn-success btn-lg" value="2" id="Dummy2">
+<input type="button" onclick="call_3()" class="btn btn-success btn-lg" value="3" id="Dummy3">
+<input type="button" onclick="call_stop()" class="btn btn-success btn-lg" value="STOP" id="Dummy4">
 
 <br><br><br>
 <input type="button" onclick="call_random()" class="btn btn-warning btn-lg" value="Random" id="DummyRandom">

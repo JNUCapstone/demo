@@ -15,20 +15,27 @@
 </head>
 <body>
 
-<input type="button" class="btn btn-success btn-lg" onclick="button1_click();" value="button1" id="Dummy1">
-<input type="button" class="btn btn-success btn-lg" onclick="button2_click();" value="button2" id="Dummy2">
-<input type="button" class="btn btn-success btn-lg" onclick="button3_click();" value="button3" id="Dummy3">
-<input type="button" class="btn btn-success btn-lg" onclick="button4_click();" value="button4" id="Dummy4">
-<input type="button" class="btn btn-success btn-lg" onclick="button5_click();" value="button5" id="Dummy5">
-<input type="button" class="btn btn-success btn-lg" onclick="button6_click();" value="button6" id="Dummy6">
-<input type="button" class="btn btn-success btn-lg" onclick="button7_click();" value="button7" id="Dummy7">
-<input type="button" class="btn btn-success btn-lg" onclick="button8_click();" value="button8" id="Dummy8">
-<input type="button" class="btn btn-success btn-lg" onclick="button9_click();" value="button9" id="Dummy9">
-<input type="button" class="btn btn-success btn-lg" onclick="button10_click();" value="button10" id="Dummy10">
+<input type="button" class="btn btn-success btn-lg" onclick="button1_click();" value="button1">
+<input type="button" class="btn btn-success btn-lg" onclick="button2_click();" value="button2">
+<input type="button" class="btn btn-success btn-lg" onclick="button3_click();" value="button3">
+<input type="button" class="btn btn-success btn-lg" onclick="button4_click();" value="button4">
+<input type="button" class="btn btn-success btn-lg" onclick="button5_click();" value="button5">
+<input type="button" class="btn btn-success btn-lg" onclick="button6_click();" value="button6">
+<input type="button" class="btn btn-success btn-lg" onclick="button7_click();" value="button7">
+<input type="button" class="btn btn-success btn-lg" onclick="button8_click();" value="button8">
+<input type="button" class="btn btn-success btn-lg" onclick="button9_click();" value="button9">
+<input type="button" class="btn btn-success btn-lg" onclick="button10_click();" value="button10">
+<br><br><br>
+<input type="button" class="btn btn-success btn-lg" onclick="start_click();" value="START">
+<input type="button" class="btn btn-success btn-lg" onclick="stop_click();" value="STOP">
+<br><br><br>
 <svg id="fillgauge" width="97%" height="250" ></svg>
 
 <script language="JavaScript">
-    var loadvalue = 50;
+    var loadvalue = 50
+    var readvalue = 0
+    var timer1
+    var ud = 0
 
     var config = liquidFillGaugeDefaultSettings();
     //config.circleColor = "#FF7777";
@@ -50,6 +57,28 @@
     function button8_click() { loadvalue = 80; gauge.update(loadvalue) }
     function button9_click() { loadvalue = 90; gauge.update(loadvalue) }
     function button10_click() { loadvalue = 100; gauge.update(loadvalue) }
+    function start_click() {
+        gauge.update(loadvalue)
+        timer1 = setInterval(function(){
+            if(ud == 0) {
+                loadvalue = loadvalue + 10
+            }
+            else if(ud == 1) {
+                loadvalue = loadvalue - 10
+            }
+            gauge.update(loadvalue)
+
+            if(loadvalue == 100) {
+                ud = 1
+            }
+            else if(loadvalue == 0) {
+                ud = 0
+            }
+        },800)
+    }
+    function stop_click() {
+        clearInterval(timer1)
+    }
 </script>
 </body>
 </html>
