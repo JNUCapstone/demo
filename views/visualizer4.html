@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
     <script src="static/liquidFillGauge.js" language="JavaScript"></script>
     <link rel="stylesheet" href="static/css/style.css" type="text/css">
     <style> .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; } </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 <div id="list1">
@@ -27,6 +27,18 @@
 </body>
 
 <script language="JavaScript">
+    $.ajax({
+            type:"GET",
+            url:"192.168.0.111:10000/status",
+            dataType:"json",
+            success: function(data){
+                console.log(data);
+            },
+            error: function(xhr, status, error) {
+                alert(error);
+            }
+    });
+
     var config1 = liquidFillGaugeDefaultSettings()
     config1.textVertPosition = 0.5;
     config1.waveAnimateTime = 1000;
