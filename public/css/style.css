@@ -11,15 +11,21 @@
     float:left;
     margin:5px;
 }
-
 .container-text {
     background-color:LightGray;
     font-family:Verdana;
     font-size:150%;
     text-align:left;
     height:260px;
-    width:339px;
+    width:320px;
     padding:15px;
     float:left;
+    margin:5px;
+}
+.container-name {
+
+    font-family:Verdana;
+    font-size:300%;
+    text-align:center;
     margin:5px;
 }

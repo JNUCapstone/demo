@@ -16,6 +16,10 @@ module.exports = function(app)
         console.log("visualizer page3");
         res.render('visualizer3.html')
     });
+    app.get('/visualizer4',function(req,res){
+        console.log("visualizer page4");
+        res.render('visualizer4.html')
+    });
     app.get('/dummy',function(req,res){
         console.log("dummy page");
         res.render('dummy.html')
