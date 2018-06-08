@@ -23,9 +23,13 @@
     margin:5px;
 }
 .container-name {
-
     font-family:Verdana;
+    width:100%;
     font-size:300%;
     text-align:center;
     margin:5px;
+}
+.container-enter {
+    width:100%;
+    height:300px;
 }

@@ -28,15 +28,15 @@
 
 <script language="JavaScript">
     $.ajax({
-            type:"GET",
-            url:"http://192.168.0.111:10000/status",
-            dataType:"json",
-            success: function(data){
-                console.log(data);
-            },
-            error: function(xhr, status, error) {
-                alert(error);
-            }
+        type:"GET",
+        url:"http://168.131.148.45:20003/status",
+        dataType:"json",
+        success: function(data){
+            console.log(data);
+        },
+        error: function (error) {
+            alert(JSON.stringify(error));
+        }
     });
 
     var config1 = liquidFillGaugeDefaultSettings()
@@ -75,7 +75,8 @@
             '<div class="container-contents">' +
             '<svg id="fillgauge3_'+this.i+'" width="100%" height="180px" ></svg><br><p>MEM</p></div>' +
             '<div class="container-text"><br>' +
-            '<p>CPU : '+ this.cpu + '%</p><p>NET I/O : '+ this.net + '%</p><p>MEM : '+ this.mem+ '%</p>';
+            '<p>CPU : '+ this.cpu + '%</p><p>NET I/O : '+ this.net + '%</p><p>MEM : '+ this.mem+ '%</p></div>' +
+            '<div class="container-enter"></div>';
         list[i].innerHTML=this.string
         var gauge1 = loadLiquidFillGauge("fillgauge1_"+this.i, this.cpu, config1)
         var gauge2 = loadLiquidFillGauge("fillgauge2_"+this.i, this.net, config2)
