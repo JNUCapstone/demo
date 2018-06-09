@@ -47,19 +47,20 @@
 </body>
 
 <script language="JavaScript">
-    var Data = []
+    var Data = new array()
     $.ajax({
         type:"GET",
         url:"http://168.131.148.45:20003/status",
         dataType:"json",
         success: function(data){
+            console.log(data);
             Data = data
         },
         error: function (error) {
             alert(JSON.stringify(error));
         }
     });
-
+    console.log("Data : ");
     console.log(Data);
 
     var config1 = liquidFillGaugeDefaultSettings()
@@ -70,11 +71,7 @@
     config2.textVertPosition = 0.5;
     config2.waveAnimateTime = 1000;
     config2.circleThickness = 0.1;
-    var config3 = liquidFillGaugeDefaultSettings()
-    config3.textVertPosition = 0.5;
-    config3.waveAnimateTime = 1000;
-    config3.circleThickness = 0.1;
-    config3.maxValue = 1
+    config2.maxValue = 1
 
     var i = 1
     var list = new Array()
@@ -83,6 +80,16 @@
     list[3] = document.getElementById('list3');
     list[4] = document.getElementById('list4');
     list[5] = document.getElementById('list5');
+    list[6] = document.getElementById('list6');
+    list[7] = document.getElementById('list7');
+    list[8] = document.getElementById('list8');
+    list[9] = document.getElementById('list9');
+    list[10] = document.getElementById('list10');
+    list[11] = document.getElementById('list11');
+    list[12] = document.getElementById('list12');
+    list[13] = document.getElementById('list13');
+    list[14] = document.getElementById('list14');
+    list[15] = document.getElementById('list15');
 
     function Create (i, name, cpu, mem) {
         this.i = i
@@ -99,10 +106,10 @@
             '<div class="container-enter"></div>';
         list[i].innerHTML=this.string
         var gauge1 = loadLiquidFillGauge("fillgauge1_"+this.i, this.cpu, config1)
-        var gauge3 = loadLiquidFillGauge("fillgauge3_"+this.i, this.mem, config3)
+        var gauge3 = loadLiquidFillGauge("fillgauge3_"+this.i, this.mem, config2)
     }
 
-    for (var j = 0; j<Data.length; j++)
+    for (var j = 0; j<5; j++)
     {
         var c = new Create(i, 'NameA', 6.61, 0.28)
         i=i+1
