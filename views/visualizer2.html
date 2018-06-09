@@ -48,25 +48,8 @@
 
 <script language="JavaScript">
     var Data
-    $.ajax({
-        type:"GET",
-        url:"http://168.131.148.45:20003/status",
-        dataType:"json",
-        success: function(data){
-            console.log(data);
-            Data = data
-
-            for (var j = 0; j<data.length; j++)
-            {
-                var c = new Create(i, data[j].names, data[j].cpu_percent, data[j].mem_percent)
-                i=i+1
-            }
-        },
-        error: function (error) {
-            alert(JSON.stringify(error));
-        }
-    });
-
+    var i = 1
+    var list = new Array()
 
     var config1 = liquidFillGaugeDefaultSettings()
     config1.textVertPosition = 0.5;
@@ -78,8 +61,6 @@
     config2.circleThickness = 0.1;
     config2.maxValue = 1
 
-    var i = 1
-    var list = new Array()
     list[1] = document.getElementById('list1');
     list[2] = document.getElementById('list2');
     list[3] = document.getElementById('list3');
@@ -107,11 +88,52 @@
             '<div class="container-contents">' +
             '<svg id="fillgauge3_'+this.i+'" width="100%" height="180px" ></svg><br><p>MEM</p></div>' +
             '<div class="container-text"><br>' +
-            '<p>CPU : '+ this.cpu + '%</p><p>MEM : '+ this.mem+ '%</p></div>' +
+            '<p>CPU : '+ this.cpu + '%</p><br><p>MEM : '+ this.mem+ '%</p></div>' +
             '<div class="container-enter"></div>';
         list[i].innerHTML=this.string
         var gauge1 = loadLiquidFillGauge("fillgauge1_"+this.i, this.cpu, config1)
         var gauge3 = loadLiquidFillGauge("fillgauge3_"+this.i, this.mem, config2)
     }
+
+    $.ajax({
+        type:"GET",
+        url:"http://168.131.148.45:20003/status",
+        dataType:"json",
+        success: function(data){
+            i=1
+            console.log(data);
+            Data = data
+
+            for (var j = 0; j<data.length; j++)
+            {
+                new Create(i, data[j].names, data[j].cpu_percent, data[j].mem_percent)
+                i=i+1
+            }
+        },
+        error: function (error) {
+            alert(JSON.stringify(error));
+        }
+    });
+
+    $.ajax({
+        type:"GET",
+        url:"http://168.131.148.45:20003/status",
+        dataType:"json",
+        success: function(data){
+            i=1
+            console.log(data);
+            Data = data
+
+            for (var j = 0; j<data.length; j++)
+            {
+                new Create(i, data[j].names, data[j].cpu_percent, data[j].mem_percent)
+                i=i+1
+            }
+        },
+        error: function (error) {
+            alert(JSON.stringify(error));
+        }
+    });
+
 </script>
 </html>
