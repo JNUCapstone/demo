@@ -47,13 +47,14 @@
 </body>
 
 <script language="JavaScript">
-    var Data = new array()
+    var Data
     $.ajax({
         type:"GET",
         url:"http://168.131.148.45:20003/status",
         dataType:"json",
         success: function(data){
             console.log(data);
+            console.log(data[0].names)
             Data = data
         },
         error: function (error) {
