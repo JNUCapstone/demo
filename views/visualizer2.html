@@ -54,11 +54,13 @@
         dataType:"json",
         success: function(data){
             console.log(data);
-            console.log(data[0].names)
             Data = data
 
-            console.log("Data : ");
-            console.log(Data);
+            for (var j = 0; j<5; j++)
+            {
+                var c = new Create(i, 'NameA', 6.61, 0.28)
+                i=i+1
+            }
         },
         error: function (error) {
             alert(JSON.stringify(error));
@@ -110,12 +112,6 @@
         list[i].innerHTML=this.string
         var gauge1 = loadLiquidFillGauge("fillgauge1_"+this.i, this.cpu, config1)
         var gauge3 = loadLiquidFillGauge("fillgauge3_"+this.i, this.mem, config2)
-    }
-
-    for (var j = 0; j<5; j++)
-    {
-        var c = new Create(i, 'NameA', 6.61, 0.28)
-        i=i+1
     }
 </script>
 </html>
