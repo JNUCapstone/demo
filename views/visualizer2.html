@@ -56,13 +56,15 @@
             console.log(data);
             console.log(data[0].names)
             Data = data
+
+            console.log("Data : ");
+            console.log(Data);
         },
         error: function (error) {
             alert(JSON.stringify(error));
         }
     });
-    console.log("Data : ");
-    console.log(Data);
+
 
     var config1 = liquidFillGaugeDefaultSettings()
     config1.textVertPosition = 0.5;
