@@ -24,20 +24,43 @@
 </div>
 <div id="list5">
 </div>
+<div id="list6">
+</div>
+<div id="list7">
+</div>
+<div id="list8">
+</div>
+<div id="list9">
+</div>
+<div id="list10">
+</div>
+<div id="list11">
+</div>
+<div id="list12">
+</div>
+<div id="list13">
+</div>
+<div id="list14">
+</div>
+<div id="list15">
+</div>
 </body>
 
 <script language="JavaScript">
+    var Data = []
     $.ajax({
         type:"GET",
         url:"http://168.131.148.45:20003/status",
         dataType:"json",
         success: function(data){
-            console.log(data);
+            Data = data
         },
         error: function (error) {
             alert(JSON.stringify(error));
         }
     });
+
+    console.log(Data);
 
     var config1 = liquidFillGaugeDefaultSettings()
     config1.textVertPosition = 0.5;
@@ -79,12 +102,10 @@
         var gauge3 = loadLiquidFillGauge("fillgauge3_"+this.i, this.mem, config3)
     }
 
-    var c = new Create(i, 'NameA', 6.61, 0.28)
-    i=i+1
-    var d = new Create(i, 'NameB', 3.25,0.55)
-    i=i+1
-    var e = new Create(i, 'NameC', 50, 0.5)
-    i=i+1
-    var f = new Create(i, 'NameD', 100, 1)
+    for (var j = 0; j<Data.length; j++)
+    {
+        var c = new Create(i, 'NameA', 6.61, 0.28)
+        i=i+1
+    }
 </script>
 </html>
