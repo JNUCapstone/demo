@@ -51,11 +51,11 @@
     var i = 1
     var list = new Array()
 
-    var config1 = liquidFillGaugeDefaultSettings()
+    var config_cpu = liquidFillGaugeDefaultSettings()
     config1.textVertPosition = 0.5;
     config1.waveAnimateTime = 1000;
     config1.circleThickness = 0.1;
-    var config2 = liquidFillGaugeDefaultSettings()
+    var config_mem = liquidFillGaugeDefaultSettings()
     config2.textVertPosition = 0.5;
     config2.waveAnimateTime = 1000;
     config2.circleThickness = 0.1;
@@ -83,16 +83,13 @@
         this.cpu = cpu
         this.mem = mem
         this.string = '<div class="container-name">' + this.name + '</div>' +
-            '<div class="container-contents">' +
-            '<svg id="fillgauge1_'+this.i+'" width="100%" height="180px"></svg><br><p>CPU</p></div>' +
-            '<div class="container-contents">' +
-            '<svg id="fillgauge3_'+this.i+'" width="100%" height="180px" ></svg><br><p>MEM</p></div>' +
-            '<div class="container-text"><br>' +
-            '<p>CPU : '+ this.cpu + '%</p><br><p>MEM : '+ this.mem+ '%</p></div>' +
+            '<div class="container-contents"><svg id="fillgauge_cpu_'+this.i+'" width="100%" height="180px"></svg><br><p>CPU</p></div>' +
+            '<div class="container-contents"><svg id="fillgauge_mem_'+this.i+'" width="100%" height="180px" ></svg><br><p>MEM</p></div>' +
+            '<div class="container-text"><br><p>CPU : '+ this.cpu + '%</p><br><p>MEM : '+ this.mem+ '%</p></div>' +
             '<div class="container-enter"></div>';
         list[i].innerHTML=this.string
-        var gauge1 = loadLiquidFillGauge("fillgauge1_"+this.i, this.cpu, config1)
-        var gauge3 = loadLiquidFillGauge("fillgauge3_"+this.i, this.mem, config2)
+        var gauge_cpu = loadLiquidFillGauge("fillgauge_cpu_"+this.i, this.cpu, config_cpu)
+        var gauge_mem = loadLiquidFillGauge("fillgauge_mem_"+this.i, this.mem, config_mem)
     }
 
     $.ajax({
