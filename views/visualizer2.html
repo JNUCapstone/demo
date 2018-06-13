@@ -14,36 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-<div id="list0" class="list">
-</div>
-<div id="list1" class="list">
-</div>
-<div id="list2" class="list">
-</div>
-<div id="list3" class="list">
-</div>
-<div id="list4" class="list">
-</div>
-<div id="list5" class="list">
-</div>
-<div id="list6" class="list">
-</div>
-<div id="list7" class="list">
-</div>
-<div id="list8" class="list">
-</div>
-<div id="list9" class="list">
-</div>
-<div id="list10" class="list">
-</div>
-<div id="list11" class="list">
-</div>
-<div id="list12" class="list">
-</div>
-<div id="list13" class="list">
-</div>
-<div id="list14" class="list">
-</div>
+<div id="body"></div>
 </body>
 
 <script language="JavaScript">
@@ -58,12 +29,46 @@
     config_mem.maxValue = 1
 
     var list = new Array()
+    var thisi = 0
+    var lasti = 0
+    var call1
 
-    list[10] = document.getElementById('list10')
+    call1 = setInterval(function(){
+        $.ajax({
+            type:"GET",
+            url:"http://168.131.148.45:20003/list",
+            dataType:"json",
+            success: function(data) {
+                for (var i = 0; i<data.length; i++) {
+                    string = '<div id="list' + i + '" class="list">\n</div>'
+                    document.getElementById('body').insertAdjacentHTML("beforebegin", string)
+                    list[i] = document.getElementById('list'+i)
+                    Load(i, data[i])
+                }
+                if(data.length < lasti) {
+                    for (var i = data.length; i <= lasti; i++) {
+                        list[i].innerHTML=""
+                    }
+                }
+            },
+            error: function (error) {
+                alert(JSON.stringify(error));
+            }
+        });
+    },5000)
 
-    for(var i = 0; i < 15; i++) {
-        list[i] = document.getElementById('list'+i)
-        Create (i, "name"+i, 10, i)
+    function Load (i, id) {
+        $.ajax({
+            type:"GET",
+            url:"http://168.131.148.45:20003/status/"+id,
+            dataType:"json",
+            success: function(data){
+                new Create(i, data.names, data.cpu_percent, data.mem_percent)
+            },
+            error: function (error) {
+                alert(JSON.stringify(error));
+            }
+        });
     }
 
     function Create (i, name, cpu, mem) {
@@ -78,25 +83,5 @@
         var gauge_cpu = loadLiquidFillGauge("fillgauge_cpu_"+this.i, this.cpu, config_cpu)
         var gauge_mem = loadLiquidFillGauge("fillgauge_mem_"+this.i, this.mem, config_mem)
     }
-
-    /*
-    $.ajax({
-        type:"GET",
-        url:"http://168.131.148.45:20003/list",
-        dataType:"json",
-        success: function(data){
-            i=1
-            console.log(data);
-
-            for (var j = 0; j<data.length; j++)
-            {
-                new Create(j, data[j])
-            }
-        },
-        error: function (error) {
-            alert(JSON.stringify(error));
-        }
-    });
-    */
 </script>
 </html>
