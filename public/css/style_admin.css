@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 .list {
+    background-color: chartreuse;
     height:370px;
     width: 200px;
     float: left;
@@ -8,6 +9,7 @@
     padding:10px;
 }
 .container-contents {
+    background-color: aquamarine;
     font-family:Verdana;
     font-size:150%;
     text-align:center;
@@ -16,6 +18,7 @@
     padding:10px;
 }
 .container-name {
+    background-color: aqua;
     font-family:Verdana;
     width:100%;
     font-size:100%;

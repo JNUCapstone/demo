@@ -7,10 +7,87 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+    <script src="static/liquidFillGauge.js" language="JavaScript"></script>
+    <link rel="stylesheet" href="static/css/style.css" type="text/css">
+    <style> .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; } </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-<div class="container">
-<iframe width="100%"; height="2000"; src="http://168.131.148.45:19999"; frameborder="0"> 서버 뻥! </iframe>
-</div>
+<div id="contents"></div>
 </body>
+
+<script language="JavaScript">
+    var config_cpu = liquidFillGaugeDefaultSettings()
+    config_cpu.textVertPosition = 0.5;
+    config_cpu.waveAnimateTime = 1000;
+    config_cpu.circleThickness = 0.1;
+    config_cpu.valueCountUp = false
+    config_cpu.waveRise = false
+    var config_mem = liquidFillGaugeDefaultSettings()
+    config_mem.textVertPosition = 0.5;
+    config_mem.waveAnimateTime = 1000;
+    config_mem.circleThickness = 0.1;
+    config_mem.maxValue = 7
+    config_mem.valueCountUp = false
+    config_mem.waveRise = false
+
+    var list = new Array()
+    var lasti = -1
+    var call1
+
+    call1 = setInterval(function(){
+        $.ajax({
+            type:"GET",
+            url:"http://168.131.148.45:20003/list",
+            dataType:"json",
+            success: function(data) {
+                for (var i = 0; i<data.length; i++) {
+                    if(i >= lasti) {
+                        string = '<div id="list' + i + '" class="list">\n</div>'
+                        document.getElementById('contents').insertAdjacentHTML("beforeend", string)
+                    }
+                    list[i] = document.getElementById('list'+i)
+                    Load(i, data[i])
+                }
+                if(data.length < lasti) {
+                    for (var i = data.length; i <= lasti; i++) {
+                        document.getElementById('contents').removeChild(list+i)
+                    }
+                }
+                lasti = data.length
+            },
+            error: function (error) {
+                Console.log(JSON.stringify(error));
+            }
+        });
+    },5000)
+
+    function Load (i, id) {
+        $.ajax({
+            type:"GET",
+            url:"http://168.131.148.45:20003/status/"+id,
+            dataType:"json",
+            success: function(data){
+                Create(i, data.names, data.cpu_percent, data.mem_percent)
+            },
+            error: function (error) {
+                Console.log(JSON.stringify(error));
+            }
+        });
+    }
+
+    function Create (i, name, cpu, mem) {
+        this.i = i
+        this.name = name
+        this.cpu = cpu
+        this.mem = mem
+        this.string = '<div class="container-name">' + this.name + '</div><br>' +
+            '<div class="container-contents"><svg id="fillgauge_cpu_'+this.i+'" width="100%" height="100px"></svg><br><p>CPU</p></div>' +
+            '<div class="container-contents"><svg id="fillgauge_mem_'+this.i+'" width="100%" height="100px" ></svg><br><p>MEM</p></div>';
+        list[i].innerHTML=this.string
+        var gauge_cpu = loadLiquidFillGauge("fillgauge_cpu_"+this.i, this.cpu, config_cpu)
+        var gauge_mem = loadLiquidFillGauge("fillgauge_mem_"+this.i, this.mem, config_mem)
+    }
+</script>
 </html>
